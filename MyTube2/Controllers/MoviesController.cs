@@ -16,14 +16,14 @@ namespace MyTube2.Controllers
             var movie = new Movie() { Name = "Shrek!" };
             var customers = new List<Customer>
             {
-                new Customer {Name = "Customer 1" },
-                new Customer {Name = "Customer 2" }
+                new Customer {  Name = "Abhi Bhowmick" , Id = 1001},
+                new Customer {  Name = "Shuvro Kanti Das" , Id = 1002}
             };
 
             var viewModel = new RandomMovieViewModel
             {
                 Movie = movie,
-                Customers = customers
+                Customers = customers                
             };
 
             return View(viewModel);
