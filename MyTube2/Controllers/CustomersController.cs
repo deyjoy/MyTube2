@@ -4,15 +4,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 
 namespace MyTube2.Controllers
 {
-    public class CustomersController : Controller
+    public class CustomersController_backup : Controller
     {
         private ApplicationDbContext _context;
 
-        public CustomersController()
+        public CustomersController_backup()
         {
             _context = new ApplicationDbContext();
         }
@@ -25,7 +26,7 @@ namespace MyTube2.Controllers
         // GET: Customers
         public ViewResult Index()
         {
-            var customers = _context.Customers.ToString();
+            var customers = _context.Customers.Include(c => c.MembershipType).ToString();
 
             return View(customers);
         }
@@ -33,9 +34,12 @@ namespace MyTube2.Controllers
         public ActionResult Details(int id)
         {
             var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
-            
+
+            if (customer == null)
+                return HttpNotFound();
 
             return View(customer);
         }
+        
     }
 }

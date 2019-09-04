@@ -8,7 +8,7 @@ using MyTube2.ViewModels;
 
 namespace MyTube2.Controllers
 {
-    public class MoviesController : Controller
+    public class CustomersController : Controller
     {
         // GET: Movies/Random
         public ActionResult Random()
